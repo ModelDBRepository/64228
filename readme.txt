@@ -35,3 +35,6 @@ mosinit.hoc file (mswin), or by typing nrngui mosinit.hoc (unix).
 
 Once the model is started press the button for the figure desired.
 Figures 5, 8, and 9 from the paper are available.
+
+20120125 upgrade from euler to derivimplicit in Cad.mod as per
+http://www.neuron.yale.edu/phpbb/viewtopic.php?f=28&t=592
