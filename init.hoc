@@ -1,0 +1,30 @@
+load_file("rod.hoc")
+
+strdef tstr
+
+xpanel("Figures for Liu and Kourennyi 2004")
+xlabel("Figures for Liu and Kourennyi 2004")
+xradiobutton("Fig5_IVCompare", "restart(\"Fig5_IVCompare.ses\")")
+xradiobutton("fig 8B. AP_BR", "restart(\"0222AP_BR.ses\")")
+xradiobutton("fig 8D. AP_DIM", "restart(\"0222AP_DIM.ses\")")
+xradiobutton("Kx_BR", "restart(\"0222Kx_BR.ses\")")
+xradiobutton("Kx_DIM", "restart(\"0222Kx_DIM.ses\")")
+xradiobutton("Fig9_AP_Patterns", "restart(\"Fig9_AP_Patterns.ses\")")
+xpanel(5,100)
+
+pwmcnt = PWManager[0].count // the initial gui should not be dismissed
+
+proc restart() {local i
+	for i=0, n_graph_lists-1 {
+		graphList[i].remove_all()
+	}
+	flush_list.remove_all()
+	fast_flush_list.remove_all()
+	doNotify()
+	for (i= PWManager[0].count-1; i >= pwmcnt; i -= 1) {
+		PWManager[0].close(i)
+		doNotify()
+	}
+	sprint(tstr, "%s", $s1)
+	load_file(1, tstr)
+}

@@ -1,0 +1,246 @@
+load_file("nrngui.hoc")
+objectvar save_window_, rvp_
+objectvar scene_vector_[13]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{pwman_place(0,0,0)}
+
+//Begin PointProcessManager
+{
+load_file("pointman.hoc")
+}
+{
+soma ocbox_ = new PointProcessManager(0)
+}
+{object_push(ocbox_)}
+{
+mt.select("IinjLT") i = mt.selected()
+ms[i] = new MechanismStandard("IinjLT")
+ms[i].set("del", 11000, 0)
+ms[i].set("ton", 8000, 0)
+ms[i].set("toff", 1000, 0)
+ms[i].set("num", 1, 0)
+ms[i].set("amp", 40, 0)
+ms[i].set("ssI", 40, 0)
+mt.select("IinjLTDim") i = mt.selected()
+ms[i] = new MechanismStandard("IinjLTDim")
+ms[i].set("del", 1000, 0)
+ms[i].set("ton", 8000, 0)
+ms[i].set("toff", 1000, 0)
+ms[i].set("num", 2, 0)
+ms[i].set("amp", 18.87, 0)
+ms[i].set("ssI", 40, 0)
+mt.select("IinjLT") i = mt.selected() maction(i)
+hoc_ac_ = 0.5
+sec.sec move() d1.flip_to(0)
+}
+{object_pop() doNotify()}
+{
+ocbox_ = ocbox_.v1
+ocbox_.map("PointProcessManager", 691, 240, 247.68, 396.48)
+}
+objref ocbox_
+//End PointProcessManager
+
+{WindowMenu[0].ses_gid(1, 0, 1, "Central")}
+{
+xpanel("soma(0 - 1) (Parameters)", 0)
+xlabel("para set 1 --  VD channels")
+soma.gKvbar_Kv = 1
+xvalue("gKvbar_Kv","soma.gKvbar_Kv", 1,"", 0, 0 )
+soma.eKv_Kv = -74
+xvalue("eKv_Kv","soma.eKv_Kv", 1,"", 0, 0 )
+soma.ghbar_h = 2.5
+xvalue("ghbar_h","soma.ghbar_h", 1,"", 0, 0 )
+soma.eh_h = -32
+xvalue("eh_h","soma.eh_h", 1,"", 0, 0 )
+soma.Vhalfh_h = -75
+xvalue("Vhalfh_h","soma.Vhalfh_h", 1,"", 0, 0 )
+soma.Sh_h = -5.33
+xvalue("Sh_h","soma.Sh_h", 1,"", 0, 0 )
+soma.aoh_h = 1
+xvalue("aoh_h","soma.aoh_h", 1,"", 0, 0 )
+soma.gKxbar_Kx = 0.45
+xvalue("gKxbar_Kx","soma.gKxbar_Kx", 1,"", 0, 0 )
+soma.eKx_Kx = -74
+xvalue("eKx_Kx","soma.eKx_Kx", 1,"", 0, 0 )
+soma.VhalfKx_Kx = -49.9
+xvalue("VhalfKx_Kx","soma.VhalfKx_Kx", 1,"", 0, 0 )
+soma.aoKx_Kx = 0.66
+xvalue("aoKx_Kx","soma.aoKx_Kx", 1,"", 0, 0 )
+soma.SKx_Kx = 5.7
+xvalue("SKx_Kx","soma.SKx_Kx", 1,"", 0, 0 )
+soma.glbar_Leak = 0.52
+xvalue("glbar_Leak","soma.glbar_Leak", 1,"", 0, 0 )
+soma.el_Leak = -74
+xvalue("el_Leak","soma.el_Leak", 1,"", 0, 0 )
+xpanel(96,128)
+}
+{WindowMenu[0].ses_gid(0, 1, 1, "Para")}
+{
+xpanel("soma(0 - 1) (Parameters)", 0)
+xlabel("para set 2 --  VD channels")
+soma.gCabar_Ca = 4
+xvalue("gCabar_Ca","soma.gCabar_Ca", 1,"", 0, 0 )
+soma.eCa_Ca = 40
+xvalue("eCa_Ca","soma.eCa_Ca", 1,"", 0, 0 )
+soma.aomCa_Ca = 100
+xvalue("aomCa_Ca","soma.aomCa_Ca", 1,"", 0, 0 )
+soma.bomCa_Ca = 100
+xvalue("bomCa_Ca","soma.bomCa_Ca", 1,"", 0, 0 )
+soma.gammaohCa_Ca = 10
+xvalue("gammaohCa_Ca","soma.gammaohCa_Ca", 1,"", 0, 0 )
+soma.deltaohCa_Ca = 0.5
+xvalue("deltaohCa_Ca","soma.deltaohCa_Ca", 1,"", 0, 0 )
+soma.VhalfCam_Ca = -10
+xvalue("VhalfCam_Ca","soma.VhalfCam_Ca", 1,"", 0, 0 )
+soma.VhalfCah_Ca = 11
+xvalue("VhalfCah_Ca","soma.VhalfCah_Ca", 1,"", 0, 0 )
+soma.SCam_Ca = 6
+xvalue("SCam_Ca","soma.SCam_Ca", 1,"", 0, 0 )
+soma.SCah_Ca = 9
+xvalue("SCah_Ca","soma.SCah_Ca", 1,"", 0, 0 )
+xpanel(96,331)
+}
+{WindowMenu[0].ses_gid(0, 1, 1, "Para")}
+{
+xpanel("soma(0 - 1) (Parameters)", 0)
+xlabel("para set 2 --  CaD channels")
+soma.depth_Cad = 10
+xvalue("depth_Cad","soma.depth_Cad", 1,"", 0, 0 )
+soma.taur_Cad = 20
+xvalue("taur_Cad","soma.taur_Cad", 1,"", 0, 0 )
+soma.Cainf_Cad = 0.0005
+xvalue("Cainf_Cad","soma.Cainf_Cad", 1,"", 0, 0 )
+soma.entryF_Cad = 1
+xvalue("entryF_Cad","soma.entryF_Cad", 1,"", 0, 0 )
+soma.eCl_Clca = -20
+xvalue("eCl_Clca","soma.eCl_Clca", 1,"", 0, 0 )
+soma.gClbar_Clca = 1.7
+xvalue("gClbar_Clca","soma.gClbar_Clca", 1,"", 0, 0 )
+soma.Clh_Clca = 1
+xvalue("Clh_Clca","soma.Clh_Clca", 1,"", 0, 0 )
+soma.eKca_Kca = -74
+xvalue("eKca_Kca","soma.eKca_Kca", 1,"", 0, 0 )
+soma.gKcabar_Kca = 0.2
+xvalue("gKcabar_Kca","soma.gKcabar_Kca", 1,"", 0, 0 )
+soma.Cahalf_Kca = 0.332
+xvalue("Cahalf_Kca","soma.Cahalf_Kca", 1,"", 0, 0 )
+xpanel(479,100)
+}
+{WindowMenu[0].ses_gid(0, 1, 1, "Para")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-0.12,-4.65661e-09)
+scene_vector_[3] = save_window_
+{save_window_.view(0, -0.12, 22000, 0.12, 551, 726, 727.68, 180.16)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("soma.iCa( 0.5 )", 6, 1, 0.638323, 0.714773, 2)
+}
+{WindowMenu[0].ses_gid(0, 2, 1, "Channels_1")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-48,10)
+scene_vector_[4] = save_window_
+{save_window_.view(0, -48, 22000, 58, 125, 479, 852.48, 201.28)}
+graphList[0].append(save_window_)
+save_window_.save_name("graphList[0].")
+save_window_.addexpr("v(.5)", 3, 1, 0.771881, 0.402849, 2)
+}
+{WindowMenu[0].ses_gid(0, 2, 1, "Channels_1")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-0.007,9.99997e-05)
+scene_vector_[5] = save_window_
+{save_window_.view(0, -0.007, 22000, 0.0071, 189, 419, 353.28, 179.2)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("soma.ih_h( 0.5 )", 2, 1, 0.661678, 0.752146, 2)
+}
+{WindowMenu[0].ses_gid(0, 3, 1, "Channels_2")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-0.019,0.029)
+scene_vector_[6] = save_window_
+{save_window_.view(0, -0.019, 22000, 0.048, 273, 726, 934.08, 314.56)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("soma.iCl( 0.5 )", 4, 1, 0.64345, 0.933546, 2)
+}
+{WindowMenu[0].ses_gid(0, 2, 1, "Channels_1")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-0.0037,0.0407)
+scene_vector_[7] = save_window_
+{save_window_.view(0, -0.0037, 22000, 0.0444, 758, 194, 300.48, 200.32)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("soma.iKx( 0.5 )", 7, 1, 0.659425, 0.952716, 2)
+}
+{WindowMenu[0].ses_gid(0, 3, 1, "Channels_2")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-0.0044,0.0484)
+scene_vector_[8] = save_window_
+{save_window_.view(0, -0.0044, 22000, 0.0528, 89, 611, 350.4, 203.2)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("soma.iKv( 0.5 )", 5, 1, 0.700941, 0.914037, 2)
+}
+{WindowMenu[0].ses_gid(0, 3, 1, "Channels_2")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-6.98492e-10,0.016)
+scene_vector_[9] = save_window_
+{save_window_.view(0, -6.98492e-10, 22000, 0.016, 551, 720, 775.68, 293.44)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("soma.iKca( 0.5 )", 2, 1, 0.8, 0.9, 2)
+}
+{WindowMenu[0].ses_gid(0, 2, 1, "Channels_1")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-68,7)
+scene_vector_[10] = save_window_
+{save_window_.view(0, -68, 22000, 75, 91, 316, 807.36, 346.24)}
+graphList[0].append(save_window_)
+save_window_.save_name("graphList[0].")
+save_window_.addexpr("v(.5)", 2, 1, 0.8, 0.9, 2)
+}
+{WindowMenu[0].ses_gid(0, 3, 1, "Channels_2")}
+{
+xpanel("RunControl", 0)
+v_init = -34
+xvalue("Init","v_init", 1,"stdinit()", 1, 1 )
+xbutton("Init & Run","run()")
+xbutton("Stop","stoprun=1")
+tstop = 22000
+xvalue("Tstop","tstop", 1,"tstop_changed()", 0, 1 )
+dt = 1
+xvalue("dt","dt", 1,"setdt()", 0, 1 )
+steps_per_ms = 1
+xvalue("Points plotted/ms","steps_per_ms", 1,"setdt()", 0, 1 )
+xpanel(784,140)
+}
+{WindowMenu[0].ses_gid(0, 0, 1, "Central")}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,-50,10)
+scene_vector_[11] = save_window_
+{save_window_.view(0, -50, 22000, 60, 590, 563, 474.24, 354.88)}
+graphList[0].append(save_window_)
+save_window_.save_name("graphList[0].")
+save_window_.addexpr("v(.5)", 2, 1, 0.8, 0.9, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,22000,1.16415e-10,0.01)
+scene_vector_[12] = save_window_
+{save_window_.view(0, 1.16415e-10, 22000, 0.01, 812, 491, 724.8, 407.68)}
+graphList[0].append(save_window_)
+save_window_.save_name("graphList[0].")
+save_window_.addvar("soma.Cai( 0.5 )", 1, 1, 0.8, 0.9, 2)
+}
+objectvar scene_vector_[1]
+{doNotify()}

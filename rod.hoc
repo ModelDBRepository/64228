@@ -1,0 +1,32 @@
+
+load_file("nrngui.hoc")
+//soma
+create soma
+access soma
+
+soma{
+ nseg=1
+ diam=10  //um
+ L=10/PI  //um
+//Ra, the axial resistance used to connect sections together [34.5 ohm-cm]
+
+ cm=30  // 1uF/cm2
+  //100um^2 area=10^-6cm^2, so 30uF/cm^2=30pF totally for the 100um^2 
+ 
+ 
+ insert Kv
+ insert h
+ insert Kx
+ insert Leak
+ insert Ca
+ insert Cad
+ insert Clca 
+ insert Kca
+ 
+
+
+}
+
+//load_file("*.ses")
+
+
