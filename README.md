@@ -15,9 +15,7 @@ Simply auto-launch from ModelDB or
 Once the model is started, press the button for the figure desired. Figures 5, 8, and 9 from the paper are available.
 
 ---
-
+## Changelog
 2012-01-25 upgrade from euler to derivimplicit in Cad.mod as per [http://www.neuron.yale.edu/phpbb/viewtopic.php?f=28&t=592](http://www.neuron.yale.edu/phpbb/viewtopic.php?f=28&t=592)
 
----
-
-2025-05-27 – Standardized to Markdown.
+2025-05-27 Standardized to Markdown.
